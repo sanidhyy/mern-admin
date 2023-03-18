@@ -13,7 +13,9 @@ import salesRoutes from "./routes/sales.js";
 
 // Data imports
 import User from "./models/User.js";
-import { dataUser } from "./data/index.js";
+import Product from "./models/Product.js";
+import ProductStat from "./models/ProductStat.js";
+import { dataUser, dataProduct, dataProductStat } from "./data/index.js";
 
 // Configuration
 dotenv.config();
@@ -45,5 +47,7 @@ mongoose
     // Only uncomment first time when running app to insert userdata into mongo db
     // To avoid any errors, don't run this code more than once
     // User.insertMany(dataUser);
+    // Product.insertMany(dataProduct);
+    // ProductStat.insertMany(dataProductStat);
   })
   .catch((error) => console.log(`${error} did not connect.`));
