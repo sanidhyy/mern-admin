@@ -11,6 +11,7 @@ import Products from "scenes/products";
 import Customers from "scenes/customers";
 import Transactions from "scenes/transactions";
 import Geography from "scenes/geography";
+import Overview from "scenes/overview";
 
 // App
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
               <Route path="/customers" element={<Customers />} />
               <Route path="/transactions" element={<Transactions />} />
               <Route path="/geography" element={<Geography />} />
+              <Route path="/overview" element={<Overview />} />
             </Route>
           </Routes>
         </ThemeProvider>
