@@ -63,30 +63,30 @@ const Daily = () => {
     <Box m="1.5rem 2.5rem">
       <Header title="DAILY SALES" subtitle="Chart of daily sales" />
 
-      <Box height="75vh">
-        <Box display="flex" justifyContent="flex-end">
-          <Box>
-            <DatePicker
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-              selectsStart
-              startDate={startDate}
-              endDate={endDate}
-            />
+      {data ? (
+        <Box height="75vh">
+          <Box display="flex" justifyContent="flex-end">
+            <Box>
+              <DatePicker
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                selectsStart
+                startDate={startDate}
+                endDate={endDate}
+              />
+            </Box>
+            <Box>
+              <DatePicker
+                selected={endDate}
+                onChange={(date) => setEndDate(date)}
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                minDate={startDate}
+              />
+            </Box>
           </Box>
-          <Box>
-            <DatePicker
-              selected={endDate}
-              onChange={(date) => setEndDate(date)}
-              selectsEnd
-              startDate={startDate}
-              endDate={endDate}
-              minDate={startDate}
-            />
-          </Box>
-        </Box>
 
-        {data ? (
           <ResponsiveLine
             data={formattedData}
             theme={{
@@ -189,12 +189,12 @@ const Daily = () => {
               },
             ]}
           />
-        ) : (
-          <Typography variant="h5" mt="20%" textAlign="center">
-            Loading...
-          </Typography>
-        )}
-      </Box>
+        </Box>
+      ) : (
+        <Typography variant="h5" mt="20%" textAlign="center">
+          Loading...
+        </Typography>
+      )}
     </Box>
   );
 };
