@@ -10,3 +10,23 @@ body,
   width: 100%;
   font-family: "Inter", sans-serif;
 }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #21295c;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #7a7f9d;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #717cc1;
+}
