@@ -22,8 +22,6 @@ const BreakdownChart = ({ isDashboard = false }) => {
     theme.palette.secondary[500],
   ];
 
-  console.log(data);
-
   const formattedData = Object.entries(data.salesByCategory).map(
     ([category, sales], i) => ({
       id: category,
@@ -32,8 +30,6 @@ const BreakdownChart = ({ isDashboard = false }) => {
       color: colors[i],
     })
   );
-
-  console.log(formattedData);
 
   return (
     <Box
