@@ -1,13 +1,18 @@
 import React from "react";
 import { Box, useTheme } from "@mui/material";
-import { useGetCustomersQuery } from "state/api";
-import Header from "components/Header";
 import { DataGrid } from "@mui/x-data-grid";
 
+import { useGetCustomersQuery } from "state/api";
+import { Header } from "components";
+
+// Customers
 const Customers = () => {
+  // theme
   const theme = useTheme();
+  // get data
   const { data, isLoading } = useGetCustomersQuery();
 
+  // data columns
   const columns = [
     {
       field: "_id",
@@ -51,7 +56,10 @@ const Customers = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      {/* Header */}
       <Header title="CUSTOMERS" subtitle="List of Customers" />
+
+      {/* Content */}
       <Box
         mt="40px"
         height="75vh"
@@ -80,6 +88,7 @@ const Customers = () => {
           },
         }}
       >
+        {/* Grid table */}
         <DataGrid
           loading={isLoading || !data}
           getRowId={(row) => row._id}

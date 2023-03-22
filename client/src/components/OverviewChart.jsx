@@ -4,26 +4,34 @@ import { useTheme, Typography } from "@mui/material";
 
 import { useGetSalesQuery } from "state/api";
 
+// Overview Chart
 const OverviewChart = ({ isDashboard = false, view }) => {
+  // theme
   const theme = useTheme();
   const { data, isLoading } = useGetSalesQuery();
 
+  // get chart data
   const [totalSalesLine, totalUnitsLine] = useMemo(() => {
     if (!data) return [];
 
+    // monthly data
     const { monthlyData } = data;
+
+    // total sales line data
     const totalSalesLine = {
       id: "totalSales",
       color: theme.palette.secondary.main,
       data: [],
     };
 
+    // total units line data
     const totalUnitsLine = {
       id: "totalUnits",
       color: theme.palette.secondary[600],
       data: [],
     };
 
+    // factor monthly data
     Object.values(monthlyData).reduce(
       (acc, { month, totalSales, totalUnits }) => {
         const currentSales = acc.sales + totalSales;
@@ -53,14 +61,17 @@ const OverviewChart = ({ isDashboard = false, view }) => {
     return [[totalSalesLine], [totalUnitsLine]];
   }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (!data || isLoading)
+  // loader
+  if (!data || isLoading) {
     return (
       <Typography variant="h5" mt="20%" textAlign="center">
         Loading...
       </Typography>
     );
+  }
 
   return (
+    // line chart
     <ResponsiveLine
       data={view === "sales" ? totalSalesLine : totalUnitsLine}
       theme={{

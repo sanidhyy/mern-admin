@@ -10,16 +10,19 @@ import {
 
 import FlexBetween from "./FlexBetween";
 
+// Data Grid toolbar
 const DataGridCustomToolbar = ({ searchInput, setSearchInput, setSearch }) => {
   return (
     <GridToolbarContainer>
       <FlexBetween width="100%">
+        {/* Left Side */}
         <FlexBetween>
           <GridToolbarColumnsButton />
           <GridToolbarDensitySelector />
           <GridToolbarExport />
         </FlexBetween>
 
+        {/* Right Side (search) */}
         <TextField
           label="Search..."
           sx={{ mb: "0.5rem", width: "15rem" }}

@@ -15,18 +15,24 @@ import {
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
-import FlexBetween from "components/FlexBetween";
-import Header from "components/Header";
-import BreakdownChart from "components/BreakdownChart";
-import OverviewChart from "components/OverviewChart";
 import { useGetDashboardQuery } from "state/api";
-import StatBox from "components/StatBox";
+import {
+  FlexBetween,
+  Header,
+  BreakdownChart,
+  OverviewChart,
+  StatBox,
+} from "components";
 
 const Dashboard = () => {
+  // theme
   const theme = useTheme();
+  // is large desktop screen
   const isNonMediumScreen = useMediaQuery("(min-width: 1200px)");
+  // get data
   const { data, isLoading } = useGetDashboardQuery();
 
+  // data columns
   const columns = [
     {
       field: "_id",
@@ -61,9 +67,12 @@ const Dashboard = () => {
   return (
     <Box m="1.5rem 2.5rem">
       <FlexBetween>
+        {/* Header */}
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
 
+        {/* Content */}
         <Box>
+          {/* Download Reports */}
           <Button
             sx={{
               backgroundColor: theme.palette.secondary.light,
@@ -92,6 +101,7 @@ const Dashboard = () => {
         }}
       >
         {/* ROW 1 */}
+        {/* Total Customers */}
         <StatBox
           title="Total Customers"
           value={data && data.totalCustomers}
@@ -104,6 +114,7 @@ const Dashboard = () => {
           }
         />
 
+        {/* Sales Today */}
         <StatBox
           title="Sales Today"
           value={data && data.todayStats.totalSales}
@@ -116,6 +127,7 @@ const Dashboard = () => {
           }
         />
 
+        {/* Overview Chart */}
         <Box
           gridColumn="span 8"
           gridRow="span 2"
@@ -125,6 +137,8 @@ const Dashboard = () => {
         >
           <OverviewChart view="sales" isDashboard={true} />
         </Box>
+
+        {/* Monthly Sales */}
         <StatBox
           title="Monthly Sales"
           value={data && data.thisMonthStats.totalSales}
@@ -137,6 +151,7 @@ const Dashboard = () => {
           }
         />
 
+        {/* Yearly Sales */}
         <StatBox
           title="Yearly Sales"
           value={data && data.yearlySalesTotal}
@@ -150,6 +165,7 @@ const Dashboard = () => {
         />
 
         {/* ROW 2 */}
+        {/* Transactions */}
         <Box
           gridColumn="span 8"
           gridRow="span 3"
@@ -187,6 +203,7 @@ const Dashboard = () => {
           />
         </Box>
 
+        {/* Sales by Category */}
         <Box
           gridColumn="span 4"
           gridRow="span 3"

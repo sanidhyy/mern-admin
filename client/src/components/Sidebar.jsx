@@ -30,7 +30,7 @@ import {
   PieChartOutlined,
 } from "@mui/icons-material";
 
-import FlexBetween from "./FlexBetween";
+import { FlexBetween } from ".";
 import profileImage from "assets/profile.jpeg";
 
 const navItems = [
@@ -99,11 +99,13 @@ const Sidebar = ({
   isSidebarOpen,
   setIsSidebarOpen,
 }) => {
+  // config
   const { pathname } = useLocation();
   const [active, setActive] = useState("");
   const navigate = useNavigate();
   const theme = useTheme();
 
+  // set active path
   useEffect(() => {
     setActive(pathname.substring(1));
   }, [pathname]);
@@ -111,6 +113,7 @@ const Sidebar = ({
   return (
     <Box component="nav">
       {isSidebarOpen && (
+        // Sidebar
         <Drawer
           open={isSidebarOpen}
           onClose={() => setIsSidebarOpen(false)}
@@ -131,6 +134,7 @@ const Sidebar = ({
           }}
         >
           <Box width="100%">
+            {/* Brand Info */}
             <Box m="1.5rem 2rem 2rem 3rem">
               <FlexBetween color={theme.palette.secondary.main}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
@@ -138,6 +142,7 @@ const Sidebar = ({
                     ECOMVISION
                   </Typography>
                 </Box>
+                {/* Mobile Sidebar Toggle Icon */}
                 {!isNonMobile && (
                   <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
                     <ChevronLeft />
@@ -145,6 +150,8 @@ const Sidebar = ({
                 )}
               </FlexBetween>
             </Box>
+
+            {/* Sidebar items */}
             <List>
               {navItems.map(({ text, icon }) => {
                 if (!icon) {
@@ -175,6 +182,7 @@ const Sidebar = ({
                             : theme.palette.secondary[100],
                       }}
                     >
+                      {/* icon */}
                       <ListItemIcon
                         sx={{
                           ml: "2rem",
@@ -186,6 +194,8 @@ const Sidebar = ({
                       >
                         {icon}
                       </ListItemIcon>
+
+                      {/* text */}
                       <ListItemText primary={text} />
                       {active === lcText && (
                         <ChevronRightOutlined sx={{ ml: "auto" }} />

@@ -3,13 +3,15 @@ import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
 import { useGetAdminsQuery } from "state/api";
-import Header from "components/Header";
-import CustomColumnMenu from "components/DataGridCustomColumnMenu";
+import { Header, CustomColumnMenu } from "components";
 
 const Admin = () => {
+  // theme
   const theme = useTheme();
+  // get data
   const { data, isLoading } = useGetAdminsQuery();
 
+  // data columns
   const columns = [
     {
       field: "_id",
@@ -53,7 +55,10 @@ const Admin = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      {/* Header */}
       <Header title="ADMINS" subtitle="Managing admins and list of admins" />
+
+      {/* Content */}
       <Box
         mt="40px"
         height="75vh"
@@ -82,6 +87,7 @@ const Admin = () => {
           },
         }}
       >
+        {/* Grid Table */}
         <DataGrid
           loading={isLoading || !data}
           getRowId={(row) => row._id}

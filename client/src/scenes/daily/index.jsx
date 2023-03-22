@@ -4,34 +4,44 @@ import DatePicker from "react-datepicker";
 import { ResponsiveLine } from "@nivo/line";
 
 import { useGetSalesQuery } from "state/api";
-import Header from "components/Header";
+import { Header } from "components";
 
 import "react-datepicker/dist/react-datepicker.css";
 
+// Daily
 const Daily = () => {
+  // keep track of start & end date
   const [startDate, setStartDate] = useState(new Date("2021-02-01"));
   const [endDate, setEndDate] = useState(new Date("2021-03-01"));
 
+  // get data
   const { data } = useGetSalesQuery();
   const theme = useTheme();
 
+  // format data
   const [formattedData] = useMemo(() => {
     if (!data) return [];
 
+    // daily data
     const { dailyData } = data;
+
+    // total sales line
     const totalSalesLine = {
       id: "totalSales",
       color: theme.palette.secondary.main,
       data: [],
     };
 
+    // total units line
     const totalUnitsLine = {
       id: "totalUnits",
       color: theme.palette.secondary[600],
       data: [],
     };
 
+    // factor daily data
     Object.values(dailyData).forEach(({ date, totalSales, totalUnits }) => {
+      // formatted date
       const dateFormatted = new Date(date);
       if (dateFormatted >= startDate && dateFormatted <= endDate) {
         const splitDate = date.substring(date.indexOf("-") + 1);
@@ -61,11 +71,15 @@ const Daily = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      {/* Header */}
       <Header title="DAILY SALES" subtitle="Chart of daily sales" />
 
+      {/* Content */}
       {data ? (
         <Box height="75vh">
+          {/* Date Picker */}
           <Box display="flex" justifyContent="flex-end">
+            {/* Start Date */}
             <Box>
               <DatePicker
                 selected={startDate}
@@ -75,6 +89,8 @@ const Daily = () => {
                 endDate={endDate}
               />
             </Box>
+
+            {/* End Date */}
             <Box>
               <DatePicker
                 selected={endDate}
@@ -87,6 +103,7 @@ const Daily = () => {
             </Box>
           </Box>
 
+          {/* Line Chart */}
           <ResponsiveLine
             data={formattedData}
             theme={{
@@ -191,6 +208,7 @@ const Daily = () => {
           />
         </Box>
       ) : (
+        // Loader
         <Typography variant="h5" mt="20%" textAlign="center">
           Loading...
         </Typography>

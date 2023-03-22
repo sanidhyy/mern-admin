@@ -3,30 +3,39 @@ import { Box, Typography, useTheme } from "@mui/material";
 import { ResponsiveLine } from "@nivo/line";
 
 import { useGetSalesQuery } from "state/api";
-import Header from "components/Header";
+import { Header } from "components";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-const Mon = () => {
+// Monthly
+const Monthly = () => {
+  // get data
   const { data } = useGetSalesQuery();
+  // theme
   const theme = useTheme();
 
+  // formatted data
   const [formattedData] = useMemo(() => {
     if (!data) return [];
 
+    // monthly data
     const { monthlyData } = data;
+
+    // total sales line
     const totalSalesLine = {
       id: "totalSales",
       color: theme.palette.secondary.main,
       data: [],
     };
 
+    // total units line
     const totalUnitsLine = {
       id: "totalUnits",
       color: theme.palette.secondary[600],
       data: [],
     };
 
+    // factor monthly data
     Object.values(monthlyData).forEach(({ month, totalSales, totalUnits }) => {
       totalSalesLine.data = [
         ...totalSalesLine.data,
@@ -52,10 +61,13 @@ const Mon = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      {/* Header */}
       <Header title="MONTHLY SALES" subtitle="Chart of monthly sales" />
 
+      {/* Content */}
       {data ? (
         <Box height="75vh">
+          {/* Line Chart */}
           <ResponsiveLine
             data={formattedData}
             theme={{
@@ -159,6 +171,7 @@ const Mon = () => {
           />
         </Box>
       ) : (
+        // Loader
         <Typography variant="h5" mt="20%" textAlign="center">
           Loading...
         </Typography>
@@ -167,4 +180,4 @@ const Mon = () => {
   );
 };
 
-export default Mon;
+export default Monthly;

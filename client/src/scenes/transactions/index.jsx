@@ -3,10 +3,11 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Box, useTheme } from "@mui/material";
 
 import { useGetTransactionsQuery } from "state/api";
-import Header from "components/Header";
-import DataGridCustomToolbar from "components/DataGridCustomToolbar";
+import { Header, DataGridCustomToolbar } from "components";
 
+// Transactions
 const Transactions = () => {
+  // theme
   const theme = useTheme();
 
   // values for backend
@@ -15,7 +16,9 @@ const Transactions = () => {
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
 
+  // search
   const [searchInput, setSearchInput] = useState("");
+  // get data
   const { data, isLoading } = useGetTransactionsQuery({
     page,
     pageSize,
@@ -23,6 +26,7 @@ const Transactions = () => {
     search,
   });
 
+  // data columns
   const columns = [
     {
       field: "_id",
@@ -56,7 +60,10 @@ const Transactions = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      {/* Header */}
       <Header title="TRANSACTIONS" subtitle="Entire list of transactions" />
+
+      {/* Content */}
       <Box
         height="80vh"
         sx={{
@@ -84,6 +91,7 @@ const Transactions = () => {
           },
         }}
       >
+        {/* Grid Table */}
         <DataGrid
           loading={isLoading || !data}
           getRowId={(row) => row._id}

@@ -22,15 +22,19 @@ import {
   ArrowDropDownOutlined,
 } from "@mui/icons-material";
 
-import FlexBetween from "components/FlexBetween";
+import { FlexBetween } from ".";
 import profileImage from "assets/profile.jpeg";
 
 const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
+  // redux dispatch items
   const dispatch = useDispatch();
+  // theme
   const theme = useTheme();
 
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
+
+  // handle
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
 
@@ -131,6 +135,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
               onClose={handleClose}
               anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
             >
+              {/* log out */}
               <MenuItem onClick={handleClose}>Log Out</MenuItem>
             </Menu>
           </FlexBetween>

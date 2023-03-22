@@ -4,14 +4,18 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useSelector } from "react-redux";
 
 import { useGetUserPerformanceQuery } from "state/api";
-import Header from "components/Header";
-import CustomColumnMenu from "components/DataGridCustomColumnMenu";
+import { Header, CustomColumnMenu } from "components";
 
+// Performance
 const Performance = () => {
+  // theme
   const theme = useTheme();
+  // Get user id from redux state
   const userId = useSelector((state) => state.global.userId);
+  // get data
   const { data, isLoading } = useGetUserPerformanceQuery(userId);
 
+  // data columns
   const columns = [
     {
       field: "_id",
@@ -45,10 +49,13 @@ const Performance = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      {/* Header */}
       <Header
         title="PERFORMANCE"
         subtitle="Track your Affiliate Sales Performance here"
       />
+
+      {/* Content */}
       <Box
         mt="40px"
         height="75vh"
@@ -77,6 +84,7 @@ const Performance = () => {
           },
         }}
       >
+        {/* Grid Table */}
         <DataGrid
           loading={isLoading || !data}
           getRowId={(row) => row._id}
