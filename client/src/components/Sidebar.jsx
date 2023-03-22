@@ -33,6 +33,7 @@ import {
 import { FlexBetween } from ".";
 import profileImage from "assets/profile.jpeg";
 
+// Nav items
 const navItems = [
   {
     text: "Dashboard",
@@ -92,6 +93,7 @@ const navItems = [
   },
 ];
 
+// Sidebar
 const Sidebar = ({
   user,
   isNonMobile,
@@ -138,7 +140,17 @@ const Sidebar = ({
             <Box m="1.5rem 2rem 2rem 3rem">
               <FlexBetween color={theme.palette.secondary.main}>
                 <Box display="flex" alignItems="center" gap="0.5rem">
-                  <Typography variant="h4" fontWeight="bold">
+                  <Typography
+                    variant="h4"
+                    fontWeight="bold"
+                    onClick={() => {
+                      navigate("/dashboard");
+                      setActive("dashboard");
+                    }}
+                    sx={{
+                      cursor: "pointer",
+                    }}
+                  >
                     ECOMVISION
                   </Typography>
                 </Box>
