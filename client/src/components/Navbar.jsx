@@ -66,6 +66,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
             borderRadius="9px"
             gap="3rem"
             p="0.1rem 1.5rem"
+            title="Search"
           >
             <InputBase placeholder="Search..." />
             <IconButton>
@@ -114,6 +115,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                 textTransform: "none",
                 gap: "1rem",
               }}
+              title={user.name}
             >
               <Box
                 component="img"
@@ -155,7 +157,9 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
               anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
             >
               {/* log out */}
-              <MenuItem onClick={handleClose}>Log Out</MenuItem>
+              <MenuItem onClick={handleClose} title="Log Out">
+                Log Out
+              </MenuItem>
             </Menu>
           </FlexBetween>
         </FlexBetween>
