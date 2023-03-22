@@ -2,6 +2,21 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "author": "Sanidhya Kr. Verma",
+  "description": "Modern Full Stack Admin Dashboard using MERN",
+  "keywords": [
+    "reactjs",
+    "react",
+    "admin-app",
+    "mern",
+    "mongodb",
+    "modern-ui/ux",
+    "js",
+    "javascript",
+    "html",
+    "css"
+  ],
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",

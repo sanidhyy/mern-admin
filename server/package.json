@@ -1,6 +1,20 @@
 {
   "name": "server",
   "version": "1.0.0",
+  "author": "Sanidhya Kr. Verma",
+  "description": "Modern Full Stack Admin Dashboard using MERN",
+  "keywords": [
+    "reactjs",
+    "react",
+    "admin-app",
+    "mern",
+    "mongodb",
+    "modern-ui/ux",
+    "js",
+    "javascript",
+    "html",
+    "css"
+  ],
   "main": "index.js",
   "type": "module",
   "scripts": {
