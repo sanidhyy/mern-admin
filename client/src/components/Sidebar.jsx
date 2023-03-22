@@ -150,13 +150,17 @@ const Sidebar = ({
                     sx={{
                       cursor: "pointer",
                     }}
+                    title="ECOMVISION"
                   >
                     ECOMVISION
                   </Typography>
                 </Box>
                 {/* Mobile Sidebar Toggle Icon */}
                 {!isNonMobile && (
-                  <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+                  <IconButton
+                    onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                    title="Close Sidebar"
+                  >
                     <ChevronLeft />
                   </IconButton>
                 )}
@@ -174,10 +178,11 @@ const Sidebar = ({
                   );
                 }
 
+                // lowercase text
                 const lcText = text.toLowerCase();
 
                 return (
-                  <ListItem key={text} disablePadding>
+                  <ListItem key={text} title={text} disablePadding>
                     <ListItemButton
                       onClick={() => {
                         navigate(`/${lcText}`);

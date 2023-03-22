@@ -53,7 +53,10 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
         {/* Left Side */}
         <FlexBetween>
           {/* Sidebar Menu */}
-          <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+          <IconButton
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            title="Toggle Sidebar"
+          >
             <MenuIcon />
           </IconButton>
 
@@ -87,7 +90,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
           </IconButton>
 
           {/* Dark/Light Mode */}
-          <IconButton onClick={() => dispatch(setMode())}>
+          <IconButton onClick={() => dispatch(setMode())} title="Dark Mode">
             {theme.palette.mode === "dark" ? (
               <DarkModeOutlined sx={{ fontSize: "25px" }} />
             ) : (
@@ -96,7 +99,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
           </IconButton>
 
           {/* Settings */}
-          <IconButton>
+          <IconButton title="Setting">
             <SettingsOutlined sx={{ fontSize: "25px" }} />
           </IconButton>
 
