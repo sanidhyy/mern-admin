@@ -25,12 +25,14 @@ import {
 import { FlexBetween } from ".";
 import profileImage from "assets/profile.jpeg";
 
+// Navbar
 const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   // redux dispatch items
   const dispatch = useDispatch();
   // theme
   const theme = useTheme();
 
+  // nav state
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
 
