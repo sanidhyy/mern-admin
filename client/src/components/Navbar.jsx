@@ -20,6 +20,7 @@ import {
   Search,
   SettingsOutlined,
   ArrowDropDownOutlined,
+  GitHub,
 } from "@mui/icons-material";
 
 import { FlexBetween } from ".";
@@ -72,6 +73,19 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
 
         {/* Right Side */}
         <FlexBetween gap="1.5rem">
+          {/* Source Code */}
+          <IconButton
+            onClick={() =>
+              window.open(
+                "http://www.github.com/Technical-Shubham-tech/mern-admin/",
+                "_blank"
+              )
+            }
+            title="Source Code"
+          >
+            <GitHub sx={{ fontSize: "25px" }} />
+          </IconButton>
+
           {/* Dark/Light Mode */}
           <IconButton onClick={() => dispatch(setMode())}>
             {theme.palette.mode === "dark" ? (
