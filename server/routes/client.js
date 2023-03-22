@@ -9,6 +9,7 @@ import {
 
 const router = express.Router();
 
+// Routes
 router.get("/products", getProducts);
 router.get("/customers", getCustomers);
 router.get("/transactions", getTransactions);

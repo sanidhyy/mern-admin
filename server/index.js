@@ -6,26 +6,31 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
 
+// Routes imports
 import clientRoutes from "./routes/client.js";
 import generalRoutes from "./routes/general.js";
 import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
 
 // Data imports
-import User from "./models/User.js";
-import Product from "./models/Product.js";
-import ProductStat from "./models/ProductStat.js";
-import Transaction from "./models/Transaction.js";
-import OverallStat from "./models/OverallStat.js";
-import AffiliateStat from "./models/AffiliateStat.js";
-import {
-  dataUser,
-  dataProduct,
-  dataProductStat,
-  dataTransaction,
-  dataOverallStat,
-  dataAffiliateStat,
-} from "./data/index.js";
+/*
+  ******************************************************
+    import User from "./models/User.js";
+    import Product from "./models/Product.js";
+    import ProductStat from "./models/ProductStat.js";
+    import Transaction from "./models/Transaction.js";
+    import OverallStat from "./models/OverallStat.js";
+    import AffiliateStat from "./models/AffiliateStat.js";
+    import {
+      dataUser,
+      dataProduct,
+      dataProductStat,
+      dataTransaction,
+      dataOverallStat,
+      dataAffiliateStat,
+    } from "./data/index.js";
+  ******************************************************
+*/
 
 // Configuration
 dotenv.config();
@@ -38,7 +43,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-// Routes
+// Routes Setup
 app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
@@ -54,13 +59,16 @@ mongoose
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
-    // Only uncomment first time when running app to insert userdata into mongo db
-    // To avoid any errors, don't run this code more than once
-    // User.insertMany(dataUser);
-    // Product.insertMany(dataProduct);
-    // ProductStat.insertMany(dataProductStat);
-    // Transaction.insertMany(dataTransaction);
-    // OverallStat.insertMany(dataOverallStat);
-    // AffiliateStat.insertMany(dataAffiliateStat);
+    // Only run first time when running app to insert data into mongodb
+    /**
+      ***********************************************
+        User.insertMany(dataUser);
+        Product.insertMany(dataProduct);
+        ProductStat.insertMany(dataProductStat);
+        Transaction.insertMany(dataTransaction);
+        OverallStat.insertMany(dataOverallStat);
+        AffiliateStat.insertMany(dataAffiliateStat);
+      ***********************************************
+    */
   })
   .catch((error) => console.log(`${error} did not connect.`));

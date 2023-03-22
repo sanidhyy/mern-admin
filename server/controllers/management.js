@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
 
+// Models import
 import User from "../models/User.js";
 import Transaction from "../models/Transaction.js";
 
+// Get Admins
 export const getAdmins = async (_, res) => {
   try {
     const admins = await User.find({ role: "admin" }).select("-password");
@@ -13,6 +15,7 @@ export const getAdmins = async (_, res) => {
   }
 };
 
+// Get User Performance
 export const getUserPerformance = async (req, res) => {
   try {
     const { id } = req.params;
@@ -31,12 +34,14 @@ export const getUserPerformance = async (req, res) => {
       { $unwind: "$affiliateStats" }, // Flatten Array/Object
     ]);
 
+    // sale transactions
     const saleTransactions = await Promise.all(
       userWithStats[0].affiliateStats.affiliateSales.map((id) => {
         return Transaction.findById(id);
       })
     );
 
+    // filtered sale transactions
     const filteredSaleTransactions = saleTransactions.filter(
       (transaction) => transaction !== null
     );

@@ -1,10 +1,12 @@
 import getCountryISO3 from "country-iso-2-to-3";
 
+// Models import
 import Product from "../models/Product.js";
 import ProductStat from "../models/ProductStat.js";
 import User from "../models/User.js";
 import Transaction from "../models/Transaction.js";
 
+// Get Products
 export const getProducts = async (_, res) => {
   try {
     const products = await Product.find();
@@ -27,6 +29,7 @@ export const getProducts = async (_, res) => {
   }
 };
 
+// Get Customers
 export const getCustomers = async (req, res) => {
   try {
     const customers = await User.find({ role: "user" }).select("-password");
@@ -36,6 +39,7 @@ export const getCustomers = async (req, res) => {
   }
 };
 
+// Get Transactions
 export const getTransactions = async (req, res) => {
   try {
     // sort - { "field": "userId", sort: "desc" }
@@ -79,6 +83,7 @@ export const getTransactions = async (req, res) => {
   }
 };
 
+// Get Geography
 export const getGeography = async (req, res) => {
   try {
     const users = await User.find();
