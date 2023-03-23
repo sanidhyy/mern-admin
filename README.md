@@ -93,7 +93,7 @@ PORT=5001
 
 ## :wrench: Stats
 
-![Stats for this App](/.github/images/stats.svg "Stats for this App")
+[![Stats for this App](/.github/images/stats.svg)](https://pagespeed.web.dev/ "Stats for this App")
 
 ## :raised_hands: Contribute
 
