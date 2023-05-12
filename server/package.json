@@ -29,6 +29,7 @@
     "country-iso-2-to-3": "^1.1.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-rate-limit": "^6.7.0",
     "helmet": "^6.0.1",
     "lodash": "^4.17.21",
     "mongoose": "^7.0.2",
