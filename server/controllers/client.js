@@ -1,4 +1,5 @@
 import getCountryISO3 from "country-iso-2-to-3";
+import _ from "lodash";
 
 // Models import
 import Product from "../models/Product.js";
@@ -45,6 +46,9 @@ export const getTransactions = async (req, res) => {
     // sort - { "field": "userId", sort: "desc" }
     const { page = 1, pageSize = 20, sort = null, search = "" } = req.query;
 
+    // sanitize search
+    var safeSearch = _.escapeRegExp(search);
+
     // Formatted sort - { userId: -1 }
     const generateSort = () => {
       const sortParsed = JSON.parse(sort);
@@ -61,8 +65,8 @@ export const getTransactions = async (req, res) => {
     // get transactions
     const transactions = await Transaction.find({
       $or: [
-        { cost: { $regex: new RegExp(search, "i") } },
-        { userId: { $regex: new RegExp(search, "i") } },
+        { cost: { $regex: new RegExp(safeSearch, "i") } },
+        { userId: { $regex: new RegExp(safeSearch, "i") } },
       ],
     })
       .sort(sortFormatted)
@@ -71,7 +75,7 @@ export const getTransactions = async (req, res) => {
 
     // total transactions
     const total = await Transaction.countDocuments({
-      name: { $regex: search, $options: "i" },
+      name: { $regex: safeSearch, $options: "i" },
     });
 
     res.status(200).json({
