@@ -81,7 +81,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
           <IconButton
             onClick={() =>
               window.open(
-                "http://www.github.com/Technical-Shubham-tech/mern-admin/",
+                "http://www.github.com/sanidhyy/mern-admin/",
                 "_blank"
               )
             }
