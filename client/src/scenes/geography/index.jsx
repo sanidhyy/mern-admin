@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, useTheme, Typography } from "@mui/material";
+import { Box, useTheme, CircularProgress } from "@mui/material";
 import { ResponsiveChoropleth } from "@nivo/geo";
 
 import { useGetGeographyQuery } from "state/api";
@@ -101,9 +101,18 @@ const Geography = () => {
           />
         ) : (
           // Loader
-          <Typography variant="h5" mt="20%" textAlign="center">
-            Loading...
-          </Typography>
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            height="100%"
+          >
+            <CircularProgress
+              size={20}
+              aria-label="Loading..."
+              color="secondary"
+            />
+          </Box>
         )}
       </Box>
     </Box>

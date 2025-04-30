@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { ResponsiveLine } from "@nivo/line";
-import { useTheme, Typography } from "@mui/material";
+import { useTheme, CircularProgress, Box } from "@mui/material";
 
 import { useGetSalesQuery } from "state/api";
 
@@ -64,9 +64,14 @@ const OverviewChart = ({ isDashboard = false, view }) => {
   // loader
   if (!data || isLoading) {
     return (
-      <Typography variant="h5" mt="20%" textAlign="center">
-        Loading...
-      </Typography>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="100%"
+      >
+        <CircularProgress size={20} aria-label="Loading..." color="secondary" />
+      </Box>
     );
   }
 

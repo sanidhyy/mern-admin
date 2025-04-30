@@ -10,6 +10,7 @@ import {
   Rating,
   useTheme,
   useMediaQuery,
+  CircularProgress,
 } from "@mui/material";
 
 import { useGetProductsQuery } from "state/api";
@@ -153,9 +154,18 @@ const Products = () => {
         </Box>
       ) : (
         // Loader
-        <Typography variant="h5" mt="20%" textAlign="center">
-          Loading...
-        </Typography>
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          height="100%"
+        >
+          <CircularProgress
+            size={20}
+            aria-label="Loading..."
+            color="secondary"
+          />
+        </Box>
       )}
     </Box>
   );

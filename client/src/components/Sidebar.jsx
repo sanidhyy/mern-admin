@@ -131,7 +131,7 @@ const Sidebar = ({
               width: drawerWidth,
             },
             "& .MuiDrawer-paper::-webkit-scrollbar": {
-              width: 0,
+              width: "5px",
             },
           }}
         >
