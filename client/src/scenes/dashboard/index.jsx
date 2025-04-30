@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   DownloadOutlined,
   Email,
   PointOfSale,
   PersonAdd,
   Traffic,
+  Close,
 } from "@mui/icons-material";
 import {
   Box,
@@ -12,6 +13,8 @@ import {
   Typography,
   useTheme,
   useMediaQuery,
+  Alert,
+  IconButton,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
@@ -31,6 +34,22 @@ const Dashboard = () => {
   const isNonMediumScreen = useMediaQuery("(min-width: 1200px)");
   // get data
   const { data, isLoading } = useGetDashboardQuery();
+  // banner state
+  const [showBanner, setShowBanner] = useState(false);
+
+  // check local storage on mount
+  useEffect(() => {
+    const bannerDismissed = localStorage.getItem("bannerDismissed");
+    if (!bannerDismissed) {
+      setShowBanner(true);
+    }
+  }, []);
+
+  // handle banner close
+  const handleBannerClose = () => {
+    setShowBanner(false);
+    localStorage.setItem("bannerDismissed", "true");
+  };
 
   // data columns
   const columns = [
@@ -66,6 +85,27 @@ const Dashboard = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
+      {/* Banner Alert */}
+      {showBanner && (
+        <Alert
+          severity="info"
+          sx={{ mb: 2 }}
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={handleBannerClose}
+            >
+              <Close fontSize="inherit" aria-label="Close Alert" />
+            </IconButton>
+          }
+        >
+          Initial load may take 1-2 minutes due to server sleep after
+          inactivity.
+        </Alert>
+      )}
+
       <FlexBetween>
         {/* Header */}
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
