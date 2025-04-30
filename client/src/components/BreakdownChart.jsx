@@ -1,6 +1,6 @@
 import React from "react";
 import { ResponsivePie } from "@nivo/pie";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, CircularProgress, Typography, useTheme } from "@mui/material";
 
 import { useGetSalesQuery } from "state/api";
 
@@ -12,9 +12,14 @@ const BreakdownChart = ({ isDashboard = false }) => {
   // Loader
   if (!data || isLoading) {
     return (
-      <Typography variant="h5" mt="20%" textAlign="center">
-        Loading...
-      </Typography>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="100%"
+      >
+        <CircularProgress size={20} aria-label="Loading..." color="secondary" />
+      </Box>
     );
   }
 

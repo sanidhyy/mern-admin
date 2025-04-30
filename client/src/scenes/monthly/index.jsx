@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, CircularProgress, useTheme } from "@mui/material";
 import { ResponsiveLine } from "@nivo/line";
 
 import { useGetSalesQuery } from "state/api";
@@ -172,9 +172,18 @@ const Monthly = () => {
         </Box>
       ) : (
         // Loader
-        <Typography variant="h5" mt="20%" textAlign="center">
-          Loading...
-        </Typography>
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          height="100%"
+        >
+          <CircularProgress
+            size={20}
+            aria-label="Loading..."
+            color="secondary"
+          />
+        </Box>
       )}
     </Box>
   );
