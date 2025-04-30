@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, CircularProgress, useTheme } from "@mui/material";
 import DatePicker from "react-datepicker";
 import { ResponsiveLine } from "@nivo/line";
 
@@ -78,15 +78,24 @@ const Daily = () => {
       {data ? (
         <Box height="75vh">
           {/* Date Picker */}
-          <Box display="flex" justifyContent="flex-end">
+          <Box display="flex" justifyContent="flex-end" gap="1rem">
             {/* Start Date */}
             <Box>
               <DatePicker
                 selected={startDate}
-                onChange={(date) => setStartDate(date)}
+                onChange={(date) => {
+                  setStartDate(date);
+                }}
                 selectsStart
                 startDate={startDate}
                 endDate={endDate}
+                dateFormat="MMM dd, yyyy"
+                className="custom-datepicker"
+                calendarClassName="custom-calendar"
+                placeholderText="Start Date"
+                showMonthDropdown
+                showYearDropdown
+                dropdownMode="select"
               />
             </Box>
 
@@ -94,11 +103,20 @@ const Daily = () => {
             <Box>
               <DatePicker
                 selected={endDate}
-                onChange={(date) => setEndDate(date)}
+                onChange={(date) => {
+                  setEndDate(date);
+                }}
                 selectsEnd
                 startDate={startDate}
                 endDate={endDate}
                 minDate={startDate}
+                dateFormat="MMM dd, yyyy"
+                className="custom-datepicker"
+                calendarClassName="custom-calendar"
+                placeholderText="End Date"
+                showMonthDropdown
+                showYearDropdown
+                dropdownMode="select"
               />
             </Box>
           </Box>
@@ -209,9 +227,18 @@ const Daily = () => {
         </Box>
       ) : (
         // Loader
-        <Typography variant="h5" mt="20%" textAlign="center">
-          Loading...
-        </Typography>
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          height="100%"
+        >
+          <CircularProgress
+            size={20}
+            aria-label="Loading..."
+            color="secondary"
+          />
+        </Box>
       )}
     </Box>
   );
