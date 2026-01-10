@@ -1,7 +1,7 @@
 ## Contributing
 
-[fork]: https://github.com/Technical-Shubham-tech/mern-admin/fork
-[pr]: https://github.com/Technical-Shubham-tech/mern-admin/compare
+[fork]: https://github.com/sanidhyy/mern-admin/fork
+[pr]: https://github.com/sanidhyy/mern-admin/compare
 [style]: https://standardjs.com/
 [code-of-conduct]: CODE_OF_CONDUCT.md
 
