@@ -50,6 +50,14 @@ PORT=5001
 
 **NOTE:** Make sure you don't share these keys publicaly.
 
+### :raising_hand: Need Help?
+
+If you run into issues during installation or setup:
+
+- **GitHub Discussions** — [Open a Q&A discussion](https://github.com/sanidhyy/mern-admin/discussions/new?category=q-a) for setup and troubleshooting help.
+- **Email** — [sanidhyyy@gmail.com](mailto:sanidhyyy@gmail.com)
+- **Discord** — `sanidhyy`
+
 ## :fire: Features
 
 - Supports both **Dark** and **Light** Theme.
