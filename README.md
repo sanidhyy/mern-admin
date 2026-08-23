@@ -37,8 +37,6 @@ PORT=5001
 
 ![Setup MongoDB](/.github/images/step_mongodb1.jpg "Setup MongoDB")
 
-**NOTE:** Make Sure you type same email in `VITE_APP_EMAILJS_RECIEVER` in `.env`
-
 8. Once, MONGODB is configured, copy your **MONGODB URL** to `MONGODB_URL`.
 
 ![Copy MONGODB_URL](/.github/images/step_mongodb2.png "Copy MONGODB_URL")
