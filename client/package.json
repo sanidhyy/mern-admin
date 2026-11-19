@@ -20,8 +20,9 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@mui/icons-material": "^5.11.11",
+    "@mui/icons-material": "^5.11.13",
     "@mui/material": "^5.11.13",
+    "@mui/system": "^5.11.13",
     "@mui/x-data-grid": "5.17.13",
     "@nivo/bar": "^0.80.0",
     "@nivo/core": "^0.80.0",
@@ -65,5 +66,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "typescript": "4.9.5"
+  }
 }
